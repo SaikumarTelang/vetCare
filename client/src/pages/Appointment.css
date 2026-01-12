@@ -1,0 +1,101 @@
+.appointment-page {
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+/* TITLE */
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* TOP BUTTONS */
+.appointment-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.appointment-tabs button {
+  padding: 12px 25px;
+  border: 1px solid #333;
+  background: white;
+  cursor: pointer;
+  font-weight: bold;
+    border-radius: 8px 8px 8px 8px;
+
+}
+
+.appointment-tabs .active {
+  background-color: #333;
+  color: white;
+}
+
+/* FORM BOX */
+.form-box {
+  max-width: 800px;
+  margin: auto;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* FORM */
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.form-row label {
+  width: 150px;
+  font-weight: bold;
+}
+
+.form-row input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+/* SUBMIT */
+.submit-btn {
+  margin: 40px auto 0;
+  padding: 14px 30px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* WHATSAPP */
+.whatsapp-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.whatsapp-buttons button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #25d366;
+  color: white;
+  cursor: pointer;
+}
+
+.whatsapp-buttons button:last-child {
+  background-color: #128c7e;
+}

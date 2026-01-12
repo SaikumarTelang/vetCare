@@ -1,0 +1,111 @@
+.about-page {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  border-bottom: 2px solid #ddd;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links li {
+  padding: 6px 12px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.nav-links .active {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Doctor Section */
+.page-title {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.doctor-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+}
+
+.doctor-image img {
+  width: 280px;
+  height: 200px;
+  object-fit: cover;
+  background: #e0e0e0;
+}
+
+.doctor-info {
+  max-width: 300px;
+}
+
+.experience {
+  margin-top: 10px;
+}
+
+/* Why Us */
+.why-title {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 0 40px;
+}
+
+.why-card {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Images Section */
+.image-content {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.image-card img {
+  width: 250px;
+  height: 160px;
+  background: #e0e0e0;
+  object-fit: cover;
+}
+
+/* Text */
+.about-text {
+  padding: 0 60px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 25px;
+  border-top: 2px solid #ddd;
+  margin-top: 40px;
+}

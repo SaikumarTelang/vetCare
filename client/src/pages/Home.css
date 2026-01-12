@@ -1,0 +1,230 @@
+.home-container {
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  background: #f4fff6;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.hero-image {
+  width: 50%;
+  height: 360px;
+  object-fit: contain;
+  background-color: white;
+  border-radius: 20px;
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  padding: 10px;
+}
+
+.doctor-name {
+  font-size: 44px;
+  color: #1b5e20;
+  margin-bottom: 5px;
+  margin-top: -10px;
+  font-weight: 700;
+}
+
+.hero-content h1 {
+  font-size: 32px;
+  color: #2e7d32;
+}
+
+.hero-content p {
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.primary-btn {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background: white;
+  border: 2px solid #2e7d32;
+  color: #2e7d32;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+.section-title {
+  margin: 60px 0 30px;
+  text-align: center;
+  color: #2e7d32;
+}
+
+/* QUICK SERVICES */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.home-card {
+  height: 220px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #ffffff;
+  padding-bottom: 20px;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.home-card:hover {
+  border: 2px solid #66bb6a;
+  box-shadow:
+    0 0 12px rgba(76, 175, 80, 0.7),
+    0 0 28px rgba(46, 125, 50, 0.6);
+}
+
+
+.home-card::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.home-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+}
+
+.pet-care{
+  background-image: url("../Assets/petcare.png");
+}
+
+.vaccination{
+  background-image: url("../Assets/vacinatio.png");
+}
+
+.breeding{
+  background-image: url("../Assets/breeding.png");
+}
+
+.home-card img {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+
+
+
+
+
+/* DOCTOR */
+.doctor-box {
+  display: flex;
+  gap: 30px;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.doctor-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* BENEFITS */
+/* BENEFITS */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  margin-top: 40px;
+}
+
+.benefit-card {
+  background: linear-gradient(135deg, #ffffff, #f4fff6);
+  padding: 35px 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+  opacity: 0;
+  transition: 0.35s ease;
+  z-index: 0;
+}
+
+.benefit-card:hover::after {
+  opacity: 0.08;
+}
+
+.benefit-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+.benefit-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: #e8f5e9;
+  border-radius: 50%;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2e7d32;
+  z-index: 1;
+  position: relative;
+}
+
+.benefit-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #1b5e20;
+  position: relative;
+  z-index: 1;
+}
+
+.benefit-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  position: relative;
+  z-index: 1;
+}
+

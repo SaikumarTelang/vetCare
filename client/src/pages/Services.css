@@ -1,0 +1,32 @@
+.services-container {
+  padding: 30px;
+}
+
+.services-container h1,
+.services-container h2 {
+  margin-bottom: 20px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.service-card {
+  background: #f5f7ff;
+  padding: 25px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #ddd;
+}
+
+.service-card:hover {
+  background: #0d6efd;
+  color: white;
+  transform: translateY(-5px);
+}

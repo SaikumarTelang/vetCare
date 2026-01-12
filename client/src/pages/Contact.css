@@ -1,0 +1,24 @@
+/* Contact Page */
+
+.contact-container {
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+  background-color: #f0fff4;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h2 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  font-size: 16px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
