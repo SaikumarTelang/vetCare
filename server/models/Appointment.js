@@ -6,6 +6,7 @@ const appointmentSchema = new mongoose.Schema({
   phone: String,
   serviceType: String,
   animalType: String,
+  breed:String,
   dateTime: String,
 }, { timestamps: true }); 
 

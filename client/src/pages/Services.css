@@ -1,32 +1,110 @@
 .services-container {
-  padding: 30px;
+  padding: 40px;
+  background: #ffffff;
 }
 
-.services-container h1,
-.services-container h2 {
-  margin-bottom: 20px;
+/* Titles */
+.page-title {
+  font-size: 36px;
+  color: #1b5e20;
+  margin-bottom: 30px;
 }
 
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1b5e20;
+  margin: 60px 0 40px;
+}
+
+/* Grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
 }
 
+/* Card */
 .service-card {
-  background: #f5f7ff;
-  padding: 25px;
+  background: linear-gradient(135deg, #ffffff, #f4fff6);
+  padding: 38px 28px;
   text-align: center;
-  font-weight: bold;
-  border-radius: 10px;
+  border-radius: 18px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid #ddd;
+  border: 2px solid transparent;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Icon */
+.service-icon {
+  font-size: 44px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* Text */
+.service-card h3 {
+  font-size: 25px;
+  margin-bottom: 6px;
+  color: #1b5e20;
+}
+
+.service-card p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Hover Glow */
 .service-card:hover {
-  background: #0d6efd;
-  color: white;
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  border-color: #66bb6a;
+  box-shadow:
+    0 0 12px rgba(76, 175, 80, 0.7),
+    0 0 28px rgba(46, 125, 50, 0.5);
+}
+
+/* Hover Gradient */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+  opacity: 0;
+  transition: 0.35s ease;
+  z-index: 0;
+}
+
+.service-card:hover::after {
+  opacity: 0.08;
+}
+
+/* Keep text above overlay */
+.service-card * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Breeding accent */
+.service-card.breeding {
+  background: linear-gradient(135deg, #ffffff, #f0fff8);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-title,
+  .page-subtitle {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .breeding-grid {
+    grid-template-columns: 1fr; /* stack on mobile */
+  }
 }

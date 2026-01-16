@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
-
 // import heroImg from "../assets/hero.jpg";
 import doctor from "../Assets/doctor.jpg";
 
@@ -9,32 +8,29 @@ export default function Home() {
     <div className="home-container">
 
       {/* HERO SECTION */}
-      <div className="hero">
-        <img src={doctor} alt="Vet Care" className="hero-image" />
+      <div className="hero-banner">
+  <div className="hero-overlay">
+    <h1 className="hero-title">Professional Veterinary Care</h1>
+    <p className="hero-subtitle">
+      Trusted care, emergency services and healthy breeding support
+      for your beloved animals.
+    </p>
 
-        <div className="hero-content">
-          <h1 className="doctor-name">Dr. Rohit</h1>
-          <h1 className="hero-title">Professional Veterinary Care</h1>
-          <p>
-            Trusted care, emergency services and healthy breeding support
-            for your beloved animals.
-          </p>
+    <div className="hero-buttons">
+      <Link to="/appointment">
+        <button className="primary-btn">Book Appointment</button>
+      </Link>
 
-          <div className="hero-buttons">
-            <Link to="/appointment">
-              <button className="primary-btn">Book Appointment</button>
-            </Link>
+      <Link to="/appointment">
+        <button className="secondary-btn">Request Rescue</button>
+      </Link>
 
-            <Link to="/appointment">
-              <button className="secondary-btn">Request Rescue</button>
-            </Link>
-
-            <Link to="/breeding">
-              <button className="secondary-btn">Find Breeding Mate</button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <Link to="/breeding">
+        <button className="secondary-btn">Find Breeding Mate</button>
+      </Link>
+    </div>
+  </div>
+</div>
 
       {/* QUICK SERVICES */}
       <h2 className="section-title">Quick Services</h2>
@@ -52,7 +48,7 @@ export default function Home() {
       {/* ABOUT DOCTOR */}
       <h2 className="section-title">About Doctor</h2>
       <div className="doctor-box">
-        <img src="" alt="Doctor" className="doctor-image" />
+        <img src={doctor} alt="Doctor" className="doctor-image" />
 
         <div className="doctor-info">
           <h3>Dr. Rohit</h3>

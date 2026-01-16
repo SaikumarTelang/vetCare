@@ -1,111 +1,253 @@
 .about-page {
   font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-/* Navbar */
-.navbar {
+/* Common container */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* ================= HERO / SLIDER ================= */
+
+.hero-section {
+  padding: 50px 0;
+  background-color: #eaf4ea;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #2e7d32;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Slider */
+.slider-frame {
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fade 1s ease-in-out;
+}
+
+@keyframes fade {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+.slider-dots {
   display: flex;
-  justify-content: space-between;
-  padding: 15px 40px;
-  border-bottom: 2px solid #ddd;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-.nav-links li {
-  padding: 6px 12px;
-  border: 1px solid #000;
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #bbb;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.nav-links .active {
-  background-color: #000;
-  color: #fff;
+.dot.active {
+  background: #2e7d32;
 }
 
-/* Doctor Section */
-.page-title {
-  text-align: center;
-  margin: 40px 0;
+/* ================= ABOUT TEXT ================= */
+
+.about-section {
+  padding: 60px 0;
+  background: #fff;
 }
+
+.section-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.about-text {
+  max-width: 750px;
+  margin: auto;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: center;
+  color: #555;
+}
+
+/* ================= DOCTOR SECTION ================= */
 
 .doctor-section {
+  padding: 60px 0;
+  background-color: #f1f6f1;
+}
+
+.doctor-card {
   display: flex;
-  justify-content: center;
+  gap: 40px;
   align-items: center;
-  gap: 50px;
-  padding: 20px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
 }
 
-.doctor-image img {
-  width: 280px;
-  height: 200px;
+.doctor-image {
+  width: 220px;
+  height: 220px;
   object-fit: cover;
-  background: #e0e0e0;
+  border-radius: 10px;
 }
 
-.doctor-info {
-  max-width: 300px;
+.doctor-name {
+  font-size: 22px;
+  margin-bottom: 5px;
 }
 
-.experience {
+.qualification {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.experience-badge {
+  background: #e0f2e9;
+  padding: 6px 14px;
+  display: inline-block;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.doctor-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.doctor-specialties {
   margin-top: 10px;
 }
 
-/* Why Us */
-.why-title {
-  text-align: center;
-  margin: 40px 0 20px;
+.specialty {
+  display: inline-block;
+  background: #eaf4ea;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin: 4px;
+}
+
+/* ================= WHY US ================= */
+
+.why-section {
+  padding: 60px 0;
+  background: #fff;
 }
 
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  padding: 0 40px;
+  margin-top: 40px;
 }
 
 .why-card {
-  padding: 20px;
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.card-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.why-card h4 {
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* ================= STATS ================= */
+
+.stats-section {
+  padding: 50px 0;
+  background-color: #2e7d32;
+  color: white;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   text-align: center;
 }
 
-/* Images Section */
-.image-content {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin: 40px 0;
+.stat-number {
+  font-size: 26px;
+  font-weight: bold;
 }
 
-.image-card img {
-  width: 250px;
-  height: 160px;
-  background: #e0e0e0;
-  object-fit: cover;
-}
-
-/* Text */
-.about-text {
-  padding: 0 60px;
+.stat-label {
   font-size: 14px;
-  line-height: 1.6;
 }
 
-/* Footer */
-.footer {
-  display: flex;
-  justify-content: space-around;
-  padding: 25px;
-  border-top: 2px solid #ddd;
-  margin-top: 40px;
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .doctor-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
