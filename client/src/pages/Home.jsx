@@ -10,7 +10,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <div className="hero-banner">
   <div className="hero-overlay">
-    <h1 className="hero-title">Professional Veterinary Care</h1>
+    <h1 className="hero-title">Professional Veterinary Care Assistance</h1>
     <p className="hero-subtitle">
       Trusted care, emergency services and healthy breeding support
       for your beloved animals.
@@ -21,10 +21,7 @@ export default function Home() {
         <button className="primary-btn">Book Appointment</button>
       </Link>
 
-      <Link to="/appointment">
-        <button className="secondary-btn">Request Rescue</button>
-      </Link>
-
+      
       <Link to="/breeding">
         <button className="secondary-btn">Find Breeding Mate</button>
       </Link>

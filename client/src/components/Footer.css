@@ -1,13 +1,22 @@
-
 .footer {
-  background: #1c1c1c;
-  color: #fff;
-  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  padding: 15px 10px;
+  font-size: 14px;
+  flex-wrap: wrap; /* important for small screens */
+}
+
+.footer-item {
+  margin: 5px 10px;
   text-align: center;
 }
 
-.footer p {
-  margin: 6px 0;
-  font-size: 14px;
-  line-height: 1.5;
+/* Mobile view */
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+  }
 }
