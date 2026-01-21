@@ -14,6 +14,7 @@ client/.env
 /coverage
 
 # production
+client/build
 /build
 
 # misc
