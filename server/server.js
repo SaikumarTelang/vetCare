@@ -10,7 +10,7 @@ const app = express();
 /* ================= MIDDLEWARE ================= */
 app.use(
   cors({
-    origin: "*", // allow frontend (Vercel)
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
