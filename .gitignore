@@ -11,6 +11,8 @@ client/node_modules/
 .env
 client/.env
 server/.env
+.env
+.env.*
 # testing
 /coverage
 
