@@ -1,11 +1,28 @@
 const Pet = require("../models/Pet");
+const cloudinary = require("../config/cloudinary");
 
 /* ================= ADD PET ================= */
 exports.addPet = async (req, res) => {
   try {
+    let imageUrl = "";
+
+    // If image is uploaded
+    if (req.file) {
+      // Convert buffer → base64
+      const base64Image = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+
+      // Upload to Cloudinary
+      const uploadResult = await cloudinary.uploader.upload(base64Image, {
+        folder: "vetcare_pets",
+      });
+
+      imageUrl = uploadResult.secure_url;
+    }
+
+    // Save pet data
     const pet = await Pet.create({
       ...req.body,
-      imageUrl: req.file ? req.file.path : "",
+      imageUrl,
     });
 
     res.status(201).json(pet);
