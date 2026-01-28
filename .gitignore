@@ -10,7 +10,7 @@ client/node_modules/
 
 .env
 client/.env
-server\config\cloudinary.js
+server/.env
 # testing
 /coverage
 
