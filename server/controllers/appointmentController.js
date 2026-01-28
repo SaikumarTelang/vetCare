@@ -6,14 +6,22 @@ exports.createAppointment = async (req, res) => {
     const appointment = await Appointment.create(req.body);
 
     const doctorPhone = process.env.DOCTOR_PHONE;
-    const customerPhone = req.body.phone.replace("+", "");
+
+    const customerPhone = req.body.phone
+      ? req.body.phone.replace(/\D/g, "")
+      : "";
+
+    const formattedDate = new Date(req.body.dateTime).toLocaleString("en-IN", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
 
     const doctorMessage = `
 New Appointment 🐾
 Name: ${req.body.name}
 Pet: ${req.body.animalType}
 Service: ${req.body.serviceType}
-Date & Time: ${req.body.dateTime}
+Date & Time: ${formattedDate}
 Customer Phone: ${req.body.phone}
 `;
 
@@ -21,7 +29,7 @@ Customer Phone: ${req.body.phone}
 Appointment Confirmed ✅
 Hello ${req.body.name},
 Your appointment for ${req.body.animalType} (${req.body.serviceType})
-is confirmed on ${req.body.dateTime}.
+is confirmed on ${formattedDate}.
 
 Thank you for choosing VetCare 🐶🐱
 `;
@@ -29,10 +37,13 @@ Thank you for choosing VetCare 🐶🐱
     res.status(201).json({
       message: "Appointment booked successfully",
       appointment,
-      doctorWhatsAppLink: `https://wa.me/${doctorPhone}?text=${encodeURIComponent(doctorMessage)}`,
-      customerWhatsAppLink: `https://wa.me/${customerPhone}?text=${encodeURIComponent(customerMessage)}`
+      doctorWhatsAppLink: doctorPhone
+        ? `https://wa.me/${doctorPhone}?text=${encodeURIComponent(doctorMessage)}`
+        : null,
+      customerWhatsAppLink: customerPhone
+        ? `https://wa.me/${customerPhone}?text=${encodeURIComponent(customerMessage)}`
+        : null,
     });
-
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -48,12 +59,10 @@ exports.getAppointments = async (req, res) => {
   }
 };
 
-/*  DELETE APPOINTMENT */
+/* DELETE APPOINTMENT */
 exports.deleteAppointment = async (req, res) => {
   try {
-    const { id } = req.params;
-
-    const deleted = await Appointment.findByIdAndDelete(id);
+    const deleted = await Appointment.findByIdAndDelete(req.params.id);
 
     if (!deleted) {
       return res.status(404).json({ message: "Appointment not found" });

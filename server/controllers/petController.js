@@ -1,29 +1,31 @@
 const Pet = require("../models/Pet");
 
+/* ================= ADD PET ================= */
 exports.addPet = async (req, res) => {
   try {
     const pet = await Pet.create({
       ...req.body,
-      imageUrl: req.file ? `/uploads/${req.file.filename}` : ""
+      imageUrl: req.file ? req.file.path : "",
     });
 
     res.status(201).json(pet);
   } catch (error) {
-    console.error(error);
+    console.error("PET UPLOAD ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 };
 
+/* ================= GET PETS ================= */
 exports.getPets = async (req, res) => {
   try {
     const pets = await Pet.find();
-    res.json(pets);
+    res.status(200).json(pets);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// Delete pet
+/* ================= DELETE PET ================= */
 exports.deletePet = async (req, res) => {
   try {
     const pet = await Pet.findByIdAndDelete(req.params.id);
@@ -37,4 +39,3 @@ exports.deletePet = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-

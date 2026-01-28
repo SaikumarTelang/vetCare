@@ -1,13 +1,17 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-
+  baseURL: "http://localhost:5000/api"  
 });
 
-export const getPets = () => API.get("/pets");
-export const getAppointments = () => API.get("/appointments");
 export const createAppointment = (data) =>
   API.post("/appointments", data);
 
-export default API;
+export const getAppointments = () =>
+  API.get("/appointments");
+
+export const getPets = () =>
+  API.get("/pets");
+
+export const getBreeds = () =>
+  API.get("/breeds");

@@ -3,7 +3,7 @@ import { createAppointment } from "../services/api";
 import "./Appointment.css";
 import { useNavigate } from "react-router-dom";
 
-/* Breeds */
+/* ================= BREEDS ================= */
 const dogBreeds = [
   "Labrador Retriever",
   "German Shepherd",
@@ -40,6 +40,8 @@ const cowBreeds = [
 ];
 
 const Appointment = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -51,8 +53,8 @@ const Appointment = () => {
   });
 
   const [links, setLinks] = useState(null);
-  const navigate = useNavigate();
 
+  /* ================= HANDLERS ================= */
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -65,17 +67,45 @@ const Appointment = () => {
     });
   };
 
+  /* ================= SUBMIT ================= */
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // ✅ Frontend validation
+    for (let key in formData) {
+      if (!formData[key]) {
+        alert("Please fill all fields");
+        return;
+      }
+    }
+
     try {
-      const res = await createAppointment(formData);
-      setLinks(res.data);
+      const response = await createAppointment({
+        ...formData,
+        dateTime: new Date(formData.dateTime).toISOString(), // ✅ SAFE FORMAT
+      });
+
+      setLinks(response.data);
       alert("Appointment booked successfully 🐾");
+
+      // ✅ Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        serviceType: "",
+        animalType: "",
+        breed: "",
+        dateTime: "",
+      });
+
     } catch (error) {
+      console.error(error);
       alert("Failed to book appointment");
     }
   };
 
+  /* ================= BREEDS ================= */
   const getBreeds = () => {
     if (formData.animalType === "Dog") return dogBreeds;
     if (formData.animalType === "Cat") return catBreeds;
@@ -102,23 +132,22 @@ const Appointment = () => {
         <form onSubmit={handleSubmit} className="appointment-form">
           <div className="form-row">
             <label>Name :</label>
-            <input name="name" onChange={handleChange} required />
+            <input name="name" value={formData.name} onChange={handleChange} />
           </div>
 
           <div className="form-row">
             <label>E-mail :</label>
-            <input name="email" onChange={handleChange} required />
+            <input name="email" value={formData.email} onChange={handleChange} />
           </div>
 
           <div className="form-row">
             <label>Phone no. :</label>
-            <input name="phone" onChange={handleChange} required />
+            <input name="phone" value={formData.phone} onChange={handleChange} />
           </div>
 
-          {/* SERVICE TYPE DROPDOWN */}
           <div className="form-row">
             <label>Service Type :</label>
-            <select name="serviceType" onChange={handleChange} required>
+            <select name="serviceType" value={formData.serviceType} onChange={handleChange}>
               <option value="">Select Service</option>
               <option value="Check Up">Check Up</option>
               <option value="Vaccination">Vaccination</option>
@@ -129,14 +158,12 @@ const Appointment = () => {
             </select>
           </div>
 
-          {/* ANIMAL TYPE DROPDOWN */}
           <div className="form-row">
             <label>Animal Type :</label>
             <select
               name="animalType"
               value={formData.animalType}
               onChange={handleAnimalChange}
-              required
             >
               <option value="">Select Animal</option>
               <option value="Dog">Dog</option>
@@ -145,7 +172,6 @@ const Appointment = () => {
             </select>
           </div>
 
-          {/* BREED DROPDOWN */}
           <div className="form-row">
             <label>Breed :</label>
             <select
@@ -153,13 +179,10 @@ const Appointment = () => {
               value={formData.breed}
               onChange={handleChange}
               disabled={!formData.animalType}
-              required
             >
               <option value="">Select Breed</option>
               {getBreeds().map((b) => (
-                <option key={b} value={b}>
-                  {b}
-                </option>
+                <option key={b} value={b}>{b}</option>
               ))}
             </select>
           </div>
@@ -169,8 +192,8 @@ const Appointment = () => {
             <input
               type="datetime-local"
               name="dateTime"
+              value={formData.dateTime}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -182,15 +205,10 @@ const Appointment = () => {
 
       {links && (
         <div className="whatsapp-buttons">
-          <button
-            onClick={() => window.open(links.doctorWhatsAppLink, "_blank")}
-          >
+          <button onClick={() => window.open(links.doctorWhatsAppLink, "_blank")}>
             Notify Doctor
           </button>
-
-          <button
-            onClick={() => window.open(links.customerWhatsAppLink, "_blank")}
-          >
+          <button onClick={() => window.open(links.customerWhatsAppLink, "_blank")}>
             Send Confirmation
           </button>
         </div>

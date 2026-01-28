@@ -7,7 +7,7 @@ const breedSchema = new mongoose.Schema({
   medicalCondition: String,
   phone: String,
   email: String,
-  image: String, // image filename or URL
+  image: String, 
   verified: {
     type: Boolean,
     default: true

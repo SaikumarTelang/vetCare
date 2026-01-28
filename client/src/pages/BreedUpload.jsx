@@ -69,18 +69,29 @@ export default function BreedUpload() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    try {
-      await axios.post("http://localhost:5000/api/pets", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      navigate("/breeding");
-    } catch (err) {
-      setError(err.response?.data?.error || "Upload failed");
-    }
-  };
+  try {
+    const data = new FormData();
+
+    data.append("name", formData.name);
+    data.append("type", formData.type);
+    data.append("breed", formData.breed);
+    data.append("age", formData.age);
+    data.append("phone", formData.phone);
+    data.append("email", formData.email);
+    data.append("image", formData.image); 
+
+    await axios.post("http://localhost:5000/api/pets", data);
+
+    navigate("/breeding");
+  } catch (err) {
+    console.error(err);
+    setError(err.response?.data?.error || "Upload failed");
+  }
+};
+
 
   return (
     <div className="breed-upload-container">

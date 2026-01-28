@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Breeding.css";
 
-
 export default function Breeding() {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState("");
 
-  // Fetch pets
+  /* ================= FETCH PETS ================= */
   useEffect(() => {
     fetchPets();
   }, []);
@@ -22,14 +21,14 @@ export default function Breeding() {
     }
   };
 
-  // Delete pet
+  /* ================= DELETE PET ================= */
   const deletePet = async (id) => {
     if (!window.confirm("Are you sure you want to delete this pet?")) return;
 
     try {
       await axios.delete(`http://localhost:5000/api/pets/${id}`);
       setPets(pets.filter((pet) => pet._id !== id));
-    } catch {
+    } catch (error) {
       alert("Failed to delete pet");
     }
   };
@@ -37,25 +36,28 @@ export default function Breeding() {
   return (
     <div className="breeding-container">
       <h1 className="breeding-title">Breeding Center</h1>
+
       <Link to="/breed-upload">
-        <button style={{ marginTop: "20px" }} className="upload-btn">
+        <button className="upload-btn" style={{ marginTop: "20px" }}>
           Upload Your Pet
         </button>
       </Link>
 
-      {error && <p style={{ color: "red" }} className="error-text">{error}</p>}
+      {error && <p className="error-text">{error}</p>}
 
       <div className="breeding-grid">
         {pets.length === 0 && <p>No pets available</p>}
 
         {pets.map((pet) => (
           <div className="pet-card" key={pet._id}>
+            
+            {/* ✅ IMAGE (Cloudinary URL — NO localhost prefix) */}
             {pet.imageUrl && (
               <div className="pet-image-wrapper">
-              <img
-                src={`http://localhost:5000${pet.imageUrl}`}
-                alt={pet.name}
-              />
+                <img
+                  src={pet.imageUrl}
+                  alt={pet.name}
+                />
               </div>
             )}
 
@@ -76,7 +78,6 @@ export default function Breeding() {
           </div>
         ))}
       </div>
-
     </div>
   );
 }
