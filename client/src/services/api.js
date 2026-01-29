@@ -5,13 +5,13 @@ const API = axios.create({
 });
 
 export const createAppointment = (data) =>
-  API.post("/appointments", data);
+  API.post("/api/appointments", data);
 
 export const getAppointments = () =>
-  API.get("/appointments");
+  API.get("/api/appointments");
 
 export const getPets = () =>
-  API.get("/pets");
+  API.get("/api/pets");
 
 export const getBreeds = () =>
-  API.get("/breeds");
+  API.get("/api/breeds");
