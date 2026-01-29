@@ -12,6 +12,7 @@ app.use(cors({
     "http://localhost:3000",
     "https://vet-care-seven.vercel.app"
   ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
