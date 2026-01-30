@@ -6,28 +6,24 @@ const connectDB = require("./config/db");
 
 const app = express();
 
-/* MIDDLEWARE */
+/* ========= MIDDLEWARE ========= */
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://vet-care-seven.vercel.app"
-  ],
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
 }));
 
 app.use(express.json());
 
-/* DB */
+/* ========= DATABASE ========= */
 connectDB();
 
-/* ROUTES */
+/* ========= ROUTES ========= */
 app.use("/api/appointments", require("./routes/appointmentRoutes"));
 app.use("/api/pets", require("./routes/petRoutes"));
 app.use("/api/breeds", require("./routes/breedRoutes"));
 
-/* TEST */
-app.get("/", (req, res) => {
+/* ========= TEST ROUTE ========= */
+app.get("/api", (req, res) => {
   res.send("VetCare API running 🚀");
 });
 
