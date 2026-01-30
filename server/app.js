@@ -10,7 +10,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://vet-care-delta.vercel.app/"
+    "https://vet-care-delta.vercel.app/api"
   ],
   credentials: true
 }));
