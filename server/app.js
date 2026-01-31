@@ -30,4 +30,6 @@ app.get("/", (req, res) => {
   res.send("VetCare API running 🚀");
 });
 
-module.exports = app;
+module.exports = (req, res) => {
+  app(req, res);
+};
