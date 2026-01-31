@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://vetcare-qzor.onrender.com/api",
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/"
 });
 
 export const createAppointment = (data) =>
