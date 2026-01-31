@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./BreedUpload.css";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const dogBreeds = [
   "Labrador Retriever",
@@ -83,7 +84,7 @@ export default function BreedUpload() {
     data.append("email", formData.email);
     data.append("image", formData.image); 
 
-    await axios.post("http://localhost:5000/api/pets", data);
+    await axios.post(`${API_URL}/api/pets`, data);
 
     navigate("/breeding");
   } catch (err) {

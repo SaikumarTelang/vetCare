@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Breeding.css";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function Breeding() {
   const [pets, setPets] = useState([]);
@@ -12,26 +13,26 @@ export default function Breeding() {
     fetchPets();
   }, []);
 
-  const fetchPets = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/api/pets");
-      setPets(res.data);
-    } catch (err) {
-      setError("Failed to load pets");
-    }
-  };
+ const fetchPets = async () => {
+  try {
+    const res = await axios.get(`${API_URL}/api/pets`);
+    setPets(res.data);
+  } catch (err) {
+    setError("Failed to load pets");
+  }
+};
 
   /* ================= DELETE PET ================= */
-  const deletePet = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this pet?")) return;
+const deletePet = async (id) => {
+  if (!window.confirm("Are you sure you want to delete this pet?")) return;
 
-    try {
-      await axios.delete(`http://localhost:5000/api/pets/${id}`);
-      setPets(pets.filter((pet) => pet._id !== id));
-    } catch (error) {
-      alert("Failed to delete pet");
-    }
-  };
+  try {
+    await axios.delete(`${API_URL}/api/pets/${id}`);
+    setPets(pets.filter((pet) => pet._id !== id));
+  } catch (error) {
+    alert("Failed to delete pet");
+  }
+};
 
   return (
     <div className="breeding-container">

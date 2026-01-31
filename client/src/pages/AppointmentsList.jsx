@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./AppointmentsList.css";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const AppointmentsList = () => {
   const [appointments, setAppointments] = useState([]);
 
   const fetchAppointments = async () => {
-    const res = await fetch("http://localhost:5000/api/appointments");
+    const res = await fetch(`${API_URL}/api/appointments`);
     const data = await res.json();
     setAppointments(data);
   };
@@ -17,7 +18,7 @@ const AppointmentsList = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this appointment?")) return;
 
-    await fetch(`http://localhost:5000/api/appointments/${id}`, {
+    await fetch(`${API_URL}/api/appointments/${id}`, {
       method: "DELETE",
     });
 
