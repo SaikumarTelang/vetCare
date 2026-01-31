@@ -10,7 +10,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://vet-care-inky.vercel.app/"
+    "https://vetcare-qzor.onrender.com"
   ],
   credentials: true
 }));
