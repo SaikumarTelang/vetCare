@@ -6,7 +6,7 @@ const connectDB = require("./config/db");
 
 const app = express();
 
-/* MIDDLEWARE */
+/* ========= MIDDLEWARE ========= */
 app.use(cors({
   origin: [
     "http://localhost:3000",
@@ -17,19 +17,17 @@ app.use(cors({
 
 app.use(express.json());
 
-/* DB */
+/* ========= DATABASE ========= */
 connectDB();
 
-/* ROUTES */
+/* ========= ROUTES ========= */
 app.use("/api/appointments", require("./routes/appointmentRoutes"));
 app.use("/api/pets", require("./routes/petRoutes"));
 app.use("/api/breeds", require("./routes/breedRoutes"));
 
-/* TEST */
+/* ========= TEST ========= */
 app.get("/", (req, res) => {
   res.send("VetCare API running 🚀");
 });
 
-module.exports = (req, res) => {
-  app(req, res);
-};
+module.exports = app;   
