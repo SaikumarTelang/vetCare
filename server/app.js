@@ -10,12 +10,14 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://vet-care-seven-git-main-sai-kumars-projects-175175a8.vercel.app/",
-    "https://vet-care-seven-luc66br5p-sai-kumars-projects-175175a8.vercel.app/",
-    "https://vet-care-seven.vercel.app/"
+    "https://vet-care-seven-git-main-sai-kumars-projects-175175a8.vercel.app",
+    "https://vet-care-seven-luc66br5p-sai-kumars-projects-175175a8.vercel.app",
+    "https://vet-care-seven.vercel.app"
   ],
   credentials: true
 }));
+
+
 
 app.use(express.json());
 
