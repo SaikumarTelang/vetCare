@@ -82,7 +82,7 @@ export default function BreedUpload() {
     /* 1️⃣ Create / save BREED */
     const breedData = new FormData();
     breedData.append("name", formData.breed);
-    breedData.append("animalType", formData.type);
+    breedData.append("animalType", formData.animalType);
     breedData.append("image", formData.image);
 
     await axios.post(`${API_URL}/api/breeds`, breedData);
