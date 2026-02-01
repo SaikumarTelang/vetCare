@@ -5,12 +5,10 @@ const upload = require("../middleware/upload");
 const {
   addBreed,
   getBreeds,
-  deleteBreed,
+  deleteBreed
 } = require("../controllers/breedController");
 
-
 router.post("/", upload.single("image"), addBreed);
-
 router.get("/", getBreeds);
 router.delete("/:id", deleteBreed);
 

@@ -75,31 +75,37 @@ export default function BreedUpload() {
 
   /* ================= SUBMIT ================= */
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    try {
-      const data = new FormData();
-      data.append("name", formData.name);
-      data.append("type", formData.type);
-      data.append("breed", formData.breed);
-      data.append("age", formData.age);
-      data.append("phone", formData.phone);
-      data.append("email", formData.email);
-      data.append("image", formData.image);
+  try {
+    /* 1️⃣ Create / save BREED */
+    const breedData = new FormData();
+    breedData.append("name", formData.breed);
+    breedData.append("animalType", formData.type);
+    breedData.append("image", formData.image);
 
-      await axios.post(`${API_URL}/api/pets`, data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+    await axios.post(`${API_URL}/api/breeds`, breedData);
 
-      navigate("/breeding");
-    } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.error || "Upload failed");
-    }
-  };
+    /* 2️⃣ Create PET */
+    const petData = new FormData();
+    petData.append("name", formData.name);
+    petData.append("type", formData.type);
+    petData.append("breed", formData.breed);
+    petData.append("age", formData.age);
+    petData.append("phone", formData.phone);
+    petData.append("email", formData.email);
+    petData.append("image", formData.image);
+
+    await axios.post(`${API_URL}/api/pets`, petData);
+
+    navigate("/breeding");
+  } catch (err) {
+    console.error(err);
+    setError(err.response?.data?.error || "Upload failed");
+  }
+};
+
 
   /* ================= UI ================= */
   return (
