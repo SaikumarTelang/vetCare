@@ -2,7 +2,7 @@ const Pet = require("../models/Pet");
 const cloudinary = require("../config/cloudinary");
 const streamifier = require("streamifier");
 
-/* helper function */
+/* helper */
 const uploadToCloudinary = (buffer) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
@@ -22,24 +22,18 @@ exports.addPet = async (req, res) => {
   try {
     let imageUrl = "";
 
-    // If image is uploaded
     if (req.file) {
-      // Convert buffer → base64
-      const base64Image = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
-
-      // Upload to Cloudinary
-      const uploadResult = await cloudinary.uploader.upload(base64Image, {
-        folder: "vetcare_pets",
-      });
-
-      imageUrl = uploadResult.secure_url;
       const result = await uploadToCloudinary(req.file.buffer);
       imageUrl = result.secure_url;
     }
 
-    // Save pet data
     const pet = await Pet.create({
-      ...req.body,
+      name: req.body.name,
+      type: req.body.type,
+      breed: req.body.breed,
+      age: req.body.age,
+      phone: req.body.phone,
+      email: req.body.email,
       imageUrl,
     });
 
