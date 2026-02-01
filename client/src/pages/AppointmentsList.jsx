@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./AppointmentsList.css";
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL || "https://vetcare-qzor.onrender.com";
 
 const AppointmentsList = () => {
   const [appointments, setAppointments] = useState([]);
 
-  const fetchAppointments = async () => {
+ const fetchAppointments = async () => {
+  try {
     const res = await fetch(`${API_URL}/api/appointments`);
     const data = await res.json();
     setAppointments(data);
-  };
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
   useEffect(() => {
     fetchAppointments();

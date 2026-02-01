@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./BreedUpload.css";
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL || "https://vetcare-qzor.onrender.com";
 
 const dogBreeds = [
   "Labrador Retriever",
