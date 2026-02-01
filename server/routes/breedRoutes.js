@@ -2,12 +2,16 @@ const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/upload");
 
+const {
+  addBreed,
+  getBreeds,
+  deleteBreed,
+} = require("../controllers/breedController");
 
-const { createBreed, getBreeds } = require("../controllers/breedController");
 
-router.post("/", createBreed);
-router.post("/", upload.single("image"), breedController.addBreed);
+router.post("/", upload.single("image"), addBreed);
 
 router.get("/", getBreeds);
+router.delete("/:id", deleteBreed);
 
 module.exports = router;
