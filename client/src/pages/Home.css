@@ -228,3 +228,70 @@
   position: relative;
   z-index: 1;
 }
+
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 20px;
+  }
+
+  /* Hero Section Adjustments */
+  .hero-banner {
+    height: auto;
+    min-height: 350px;
+    border-radius: 12px;
+  }
+
+  .hero-overlay {
+    padding: 30px;
+    text-align: center;
+    align-items: center;
+    background: rgba(27, 94, 32, 0.7); /* Slightly darker for better text legibility on mobile */
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .primary-btn, .secondary-btn {
+    width: 100%; /* Stack buttons on very small screens */
+    max-width: 300px;
+  }
+
+  /* Quick Services & Benefits - Switch to 1 column */
+  .home-grid, 
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-card {
+    height: 180px;
+  }
+
+  /* Doctor Section - Stack vertically */
+  .doctor-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .doctor-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    margin: 40px 0 20px;
+    font-size: 24px;
+  }
+}
