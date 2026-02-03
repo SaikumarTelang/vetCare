@@ -14,7 +14,7 @@ export default function Breeding() {
 
   const fetchPets = async () => {
     try {
-      const res = await getPets(); // ✅ uses Render URL internally
+      const res = await getPets(); 
       setPets(res.data);
     } catch (err) {
       console.error(err);
@@ -27,7 +27,7 @@ export default function Breeding() {
     if (!window.confirm("Are you sure you want to delete this pet?")) return;
 
     try {
-      await API.delete(`/api/pets/${id}`); // ✅ NO localhost
+      await API.delete(`/api/pets/${id}`); 
       setPets((prev) => prev.filter((pet) => pet._id !== id));
     } catch (error) {
       console.error(error);

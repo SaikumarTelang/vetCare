@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./BreedUpload.css";
 
-/* ✅ HARD-CODE API BASE (SAFE FOR VERCEL) */
+/*API KEY*/
 const API_URL = "https://vetcare-qzor.onrender.com";
 
 /* ================= BREEDS ================= */
@@ -79,7 +79,7 @@ export default function BreedUpload() {
   setError("");
 
   try {
-    /* 1️⃣ Create / save BREED */
+    /*save BREED */
     const breedData = new FormData();
     breedData.append("name", formData.breed);
     breedData.append("animalType", formData.animalType);
@@ -87,7 +87,7 @@ export default function BreedUpload() {
 
     await axios.post(`${API_URL}/api/breeds`, breedData);
 
-    /* 2️⃣ Create PET */
+    /* Create PET */
     const petData = new FormData();
     petData.append("name", formData.name);
     petData.append("type", formData.type);

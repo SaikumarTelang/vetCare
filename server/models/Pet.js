@@ -14,7 +14,7 @@ const petSchema = new mongoose.Schema({
 
   isVerified: {
     type: Boolean,
-    default: true // doctor verified
+    default: true 
   },
 
   imageUrl: {

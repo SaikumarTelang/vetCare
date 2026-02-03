@@ -27,17 +27,17 @@
 }
 
 .logo-img {
-  height: 65px;        /* ⬅ increased size */
+  height: 65px;       
   width: 65px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #ffffff;   /* makes logo pop */
+  border: 3px solid #ffffff;  
   background-color: #fff;
 }
 
 .brand h2 {
   color: #ffffff;
-  font-size: 30px;     /* ⬅ bigger text */
+  font-size: 30px;   
   font-weight: 700;
   margin: 0;
   letter-spacing: 1px;
@@ -75,7 +75,7 @@
 /* ================= HAMBURGER ================= */
 .menu-icon {
   display: none;
-  font-size: 34px;   /* ⬅ bigger & clearer */
+  font-size: 34px;  
   color: #ffffff;
   cursor: pointer;
   user-select: none;

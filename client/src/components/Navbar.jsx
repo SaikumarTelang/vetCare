@@ -10,7 +10,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
 
-        {/* LEFT: Brand */}
+        {/* LOGO */}
         <div className="brand">
           <img src={logo} alt="VetCare Logo" className="logo-img" />
           <h2>VetCare</h2>

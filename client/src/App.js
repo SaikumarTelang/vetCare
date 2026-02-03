@@ -13,7 +13,7 @@ import "./App.css";
 function Layout() {
   const location = useLocation();
 
-  // Pages where footer should NOT appear
+  
   const hideFooterRoutes = ["/appointments-list","/breeding"];
 
   return (

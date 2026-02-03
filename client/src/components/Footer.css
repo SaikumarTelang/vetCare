@@ -6,7 +6,7 @@
   color: #ffffff;
   padding: 15px 10px;
   font-size: 14px;
-  flex-wrap: wrap; /* important for small screens */
+  flex-wrap: wrap; 
 }
 
 .footer-item {
