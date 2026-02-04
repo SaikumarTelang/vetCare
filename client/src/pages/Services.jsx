@@ -1,8 +1,10 @@
 import "./Services.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Services() {
+export default function Services({ onNavigateAppointment }) {
   const navigate = useNavigate();
+  const goAppointment = () =>
+    onNavigateAppointment ? onNavigateAppointment() : navigate("/appointment");
 
   return (
     <div className="services-container">
@@ -10,19 +12,19 @@ export default function Services() {
       <h1 className="page-title">VetCare Services</h1>
 
       <div className="services-grid">
-        <div className="service-card" onClick={() => navigate("/appointment")}>
+        <div className="service-card" onClick={goAppointment}>
           <span className="service-icon">😺🩺</span>
           <h3>CheckUps</h3>
           <p>Regular health examinations to monitor your pet’s overall well-being, detect early signs of illness, and ensure long-term preventive care.</p>
         </div>
 
-        <div className="service-card active" onClick={() => navigate("/appointment")}>
+        <div className="service-card active" onClick={goAppointment}>
           <span className="service-icon">💊💉</span>
           <h3>Vaccination</h3>
           <p>Essential vaccinations to protect your pet from common and life-threatening diseases, following recommended veterinary schedules.</p>
         </div>
 
-        <div className="service-card" onClick={() => navigate("/appointment")}>
+        <div className="service-card" onClick={goAppointment}>
           <span className="service-icon">😷🏥</span>
           <h3>Surgery</h3>
           <p>Safe and sterile surgical procedures performed by experienced veterinarians using modern equipment and post-operative care.</p>
@@ -30,13 +32,13 @@ export default function Services() {
 
     
 
-        <div className="service-card" onClick={() => navigate("/appointment")}>
+        <div className="service-card" onClick={goAppointment}>
           <span className="service-icon">🚑🚨</span>
           <h3>Emergency Care</h3>
           <p>Immediate medical attention for accidents, injuries, or sudden health conditions, available when your pet needs urgent care.</p>
         </div>
 
-        <div className="service-card" onClick={() => navigate("/appointment")}>
+        <div className="service-card" onClick={goAppointment}>
           <span className="service-icon">🏠🏡</span>
           <h3>Home Visit</h3>
           <p>Convenient veterinary care at your home for pets that are anxious, elderly, or unable to travel to the clinic.</p>

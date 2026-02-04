@@ -45,6 +45,7 @@ const catBreeds = [
 export default function BreedUpload() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [previewUrl, setPreviewUrl] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -63,7 +64,9 @@ export default function BreedUpload() {
   };
 
   const handleImage = (e) => {
-    setFormData((prev) => ({ ...prev, image: e.target.files[0] }));
+    const file = e.target.files[0];
+    setFormData((prev) => ({ ...prev, image: file }));
+    if (file) setPreviewUrl(URL.createObjectURL(file));
   };
 
   const getBreeds = () => {
@@ -82,7 +85,7 @@ export default function BreedUpload() {
     /*save BREED */
     const breedData = new FormData();
     breedData.append("name", formData.breed);
-    breedData.append("animalType", formData.animalType);
+    breedData.append("animalType", formData.type);
     breedData.append("image", formData.image);
 
     await axios.post(`${API_URL}/api/breeds`, breedData);
@@ -111,63 +114,63 @@ export default function BreedUpload() {
   return (
     <div className="breed-upload-container">
       <h2>Upload Pet</h2>
+      <p className="breed-upload-subtitle">Add your pet to the verified breeding network</p>
 
       {error && <p className="breed-upload-error">{error}</p>}
 
       <form className="breed-upload-form" onSubmit={handleSubmit}>
-        <input
-          name="name"
-          placeholder="Pet Name"
-          onChange={handleChange}
-          required
-        />
-
-        <select name="type" onChange={handleChange} required>
-          <option value="">Select Animal</option>
-          <option value="dog">Dog</option>
-          <option value="cow">Cow</option>
-          <option value="cat">Cat</option>
-        </select>
-
-        <select name="breed" onChange={handleChange} required>
-          <option value="">Select Breed</option>
-          {getBreeds().map((breed) => (
-            <option key={breed} value={breed}>
-              {breed}
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="number"
-          name="age"
-          placeholder="Age"
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          name="phone"
-          placeholder="Phone Number"
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-        />
-
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImage}
-          required
-        />
-
-        <button type="submit">Submit</button>
+        <div className="form-grid">
+          <div className="form-group">
+            <label>Pet Name</label>
+            <input name="name" placeholder="e.g., Bruno" onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label>Animal</label>
+            <div className="type-toggle">
+              {["dog", "cow", "cat"].map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  className={`toggle-btn ${formData.type === t ? "active" : ""}`}
+                  onClick={() => setFormData((prev) => ({ ...prev, type: t, breed: "" }))}
+                >
+                  {t.charAt(0).toUpperCase() + t.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="form-group">
+            <label>Breed</label>
+            <select name="breed" onChange={handleChange} required disabled={!formData.type}>
+              <option value="">Select Breed</option>
+              {getBreeds().map((breed) => (
+                <option key={breed} value={breed}>{breed}</option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Age</label>
+            <input type="number" name="age" placeholder="Age in years" onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label>Phone</label>
+            <input name="phone" placeholder="Phone Number" onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email (optional)" onChange={handleChange} />
+          </div>
+          <div className="form-group full">
+            <label>Photo</label>
+            <input type="file" accept="image/*" onChange={handleImage} required />
+            {previewUrl && (
+              <div className="image-preview">
+                <img src={previewUrl} alt="Preview" />
+              </div>
+            )}
+          </div>
+        </div>
+        <button type="submit" className="submit-btn">Upload Pet</button>
       </form>
     </div>
   );

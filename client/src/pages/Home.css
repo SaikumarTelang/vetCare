@@ -1,6 +1,5 @@
 .home-container {
   padding: 40px;
-  font-family: Arial, sans-serif;
 }
 
 /* HERO */
@@ -22,9 +21,9 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(27, 94, 32, 0.6),
-    rgba(27, 94, 32, 0.4),
-    rgba(27, 94, 32, 0.2)
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.2)
   );
   display: flex;
   flex-direction: column;
@@ -33,11 +32,23 @@
   color: rgb(255, 255, 255);
 }
 
+.hero-panel {
+  max-width: 720px;
+  background: rgba(27, 94, 32, 0.25);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 16px;
+  padding: 24px 22px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
 /* HERO TEXT */
 .hero-title {
   font-size: 44px;
   font-weight: 800;
   margin-bottom: 15px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 }
 
 .hero-subtitle {
@@ -45,6 +56,7 @@
   max-width: 600px;
   line-height: 1.6;
   color: rgb(255, 255, 255);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.6);
 }
 
 /* BUTTONS */
@@ -56,21 +68,25 @@
 }
 
 .primary-btn {
-  background: #2e7d32;
-  color: white;
+  background: #00e676;
+  color: #0b3b18;
   border: none;
   padding: 12px 18px;
-  border-radius: 8px;
+  border-radius: 999px;
   cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
 }
 
 .secondary-btn {
-  background: white;
-  border: 2px solid #2e7d32;
-  color: #2e7d32;
+  background: #ffffff;
+  border: 2px solid #00e676;
+  color: #0b3b18;
   padding: 12px 18px;
-  border-radius: 8px;
+  border-radius: 999px;
   cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
 /* SECTIONS */
@@ -118,11 +134,34 @@
   content: "";
   position: absolute;
   inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.1) 60%, transparent);
 }
 
 .home-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+}
+
+.home-card-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 16px 12px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.home-card-title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.home-card-desc {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.9;
 }
 
 .pet-care {

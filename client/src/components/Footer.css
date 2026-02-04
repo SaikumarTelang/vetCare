@@ -2,15 +2,16 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #1c1c1c;
-  color: #ffffff;
-  padding: 15px 10px;
+  background-color: var(--light-green);
+  color: var(--primary-green);
+  padding: 18px 12px;
   font-size: 14px;
   flex-wrap: wrap; 
+  border-top: 1px solid rgba(46, 125, 50, 0.2);
 }
 
 .footer-item {
-  margin: 5px 10px;
+  margin: 6px 12px;
   text-align: center;
 }
 

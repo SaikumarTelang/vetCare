@@ -1,25 +1,63 @@
-/* Breeding Page */
-
 .breeding-container {
-  padding: 20px;
+  padding: 0 20px 30px;
+}
+
+.breed-hero {
+  background: linear-gradient(135deg, var(--light-green), #f7fff7);
+  border-radius: 16px;
+  padding: 28px 22px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin-top: 18px;
+}
+
+.breed-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .breeding-title {
-  font-size: 28px;
-  margin-bottom: 15px;
+  color: var(--dark-green);
+  font-size: 30px;
+  margin: 0;
+}
+
+.breeding-subtitle {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+.breed-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 .upload-btn {
-  background-color: #2563eb;
-  color: white;
+  background-color: #00e676;
+  color: #0b3b18;
   border: none;
   padding: 10px 18px;
-  border-radius: 6px;
+  border-radius: 999px;
   cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .upload-btn:hover {
-  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.18);
+}
+
+.breed-count {
+  background: #ffffff;
+  color: var(--dark-green);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 700;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
 .breeding-grid {
@@ -34,6 +72,7 @@
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  border: 1px solid #e6f0e6;
 }
 
 .pet-image-wrapper {
@@ -49,24 +88,77 @@
   display: block;
 }
 
-.pet-details {
-  padding: 15px;
+.pet-body {
+  padding: 14px 15px;
 }
 
-.pet-details p {
-  margin: 6px 0;
-  font-size: 14px;
+.pet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pet-name {
+  margin: 0;
+  font-size: 20px;
+  color: var(--dark-green);
+}
+
+.pet-type-badge {
+  background: var(--light-green);
+  color: var(--primary-green);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.pet-meta {
+  margin-top: 6px;
+  color: #3b7a3b;
+  font-weight: 600;
+}
+
+.dot {
+  margin: 0 8px;
+  color: #9bb09b;
+}
+
+.pet-contact {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.phone {
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-btn {
+  border: none;
+  padding: 8px 14px;
+  background-color: #25d366;
+  color: #083b1b;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 .delete-btn {
-  width: 100%;
   border: none;
-  padding: 10px;
+  padding: 8px 14px;
   background-color: #ef4444;
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
-  border-radius: 0 0 12px 12px;
+  border-radius: 8px;
 }
 
 .delete-btn:hover {

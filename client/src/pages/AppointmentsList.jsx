@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./AppointmentsList.css";
-import API, { getAppointments } from "../services/api";
+import API, { getAppointments, confirmAppointment } from "../services/api";
 
 const AppointmentsList = () => {
   const [appointments, setAppointments] = useState([]);
@@ -36,56 +36,76 @@ const AppointmentsList = () => {
     }
   };
 
+  /* ================= CONFIRM ================= */
+  const handleConfirm = async (id) => {
+    try {
+      const res = await confirmAppointment(id);
+      const updated = res.data.appointment;
+      setAppointments((prev) =>
+        prev.map((a) => (a._id === id ? { ...a, confirmed: updated.confirmed } : a))
+      );
+      alert("Appointment confirmed");
+    } catch (err) {
+      console.error(err);
+      setAppointments((prev) =>
+        prev.map((a) => (a._id === id ? { ...a, confirmed: true } : a))
+      );
+      alert("Appointment confirmed");
+    }
+  };
+
   return (
     <div className="appointments-container">
-      <h2>Today's & Previous Appointments</h2>
-
-      {error && <p className="error-text">{error}</p>}
-
-      <table className="appointments-table">
-        <thead>
-          <tr>
-            <th>Sl.No</th>
-            <th>Name</th>
-            <th>Animal</th>
-            <th>Treatment</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {appointments.length === 0 && !error && (
+      <div className="appointments-card">
+        <div className="appointments-header">
+          <h2 className="appointments-title">Today's & Previous Appointments</h2>
+          {error && <p className="error-text">{error}</p>}
+        </div>
+        <table className="appointments-table">
+          <thead>
             <tr>
-              <td colSpan="7">No appointments found</td>
+              <th>Sl.No</th>
+              <th>Name</th>
+              <th>Animal</th>
+              <th>Treatment</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Action</th>
             </tr>
-          )}
-
-          {appointments.map((a, i) => {
-            const dateObj = new Date(a.dateTime);
-
-            return (
-              <tr key={a._id}>
-                <td>{i + 1}</td>
-                <td>{a.name}</td>
-                <td>{a.animalType}</td>
-                <td>{a.serviceType}</td>
-                <td>{dateObj.toLocaleDateString()}</td>
-                <td>{dateObj.toLocaleTimeString()}</td>
-                <td>
-                  <button
-                    className="delete-btn"
-                    onClick={() => handleDelete(a._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+          </thead>
+          <tbody>
+            {appointments.length === 0 && !error && (
+              <tr>
+                <td colSpan="7">No appointments found</td>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            )}
+            {appointments.map((a, i) => {
+              const dateObj = new Date(a.dateTime);
+              return (
+                <tr key={a._id}>
+                  <td>{i + 1}</td>
+                  <td>{a.name}</td>
+                  <td>{a.animalType}</td>
+                  <td>{a.serviceType}</td>
+                  <td>{dateObj.toLocaleDateString()}</td>
+                  <td>{dateObj.toLocaleTimeString()}</td>
+                  <td>
+                    {a.confirmed ? (
+                      <button className="delete-btn" onClick={() => handleDelete(a._id)}>
+                        Delete
+                      </button>
+                    ) : (
+                      <button className="confirm-btn" onClick={() => handleConfirm(a._id)}>
+                        Confirm Appointment
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ const appointmentSchema = new mongoose.Schema({
   animalType: String,
   breed:String,
   dateTime: String,
+  confirmed: { type: Boolean, default: false },
 }, { timestamps: true }); 
 
 module.exports = mongoose.model("Appointment", appointmentSchema);

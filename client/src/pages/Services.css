@@ -1,22 +1,23 @@
 .services-container {
-  padding: 40px;
+  padding: 30px 20px 50px;
   background: #ffffff;
 }
 
 /* Titles */
 .page-title {
-  font-size: 36px;
-  color: #1b5e20;
-  margin-bottom: 30px;
+  font-size: 34px;
+  color: var(--dark-green);
+  margin-bottom: 18px;
+  text-align: center;
 }
 
 
 .section-title {
   text-align: center;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
-  color: #1b5e20;
-  margin: 60px 0 40px;
+  color: var(--primary-green);
+  margin: 40px 0 28px;
 }
 
 /* Grid */
@@ -30,7 +31,7 @@
 /* Card */
 .service-card {
   background: linear-gradient(135deg, #ffffff, #f4fff6);
-  padding: 38px 28px;
+  padding: 32px 24px;
   text-align: center;
   border-radius: 18px;
   cursor: pointer;
@@ -50,13 +51,13 @@
 
 /* Text */
 .service-card h3 {
-  font-size: 25px;
+  font-size: 22px;
   margin-bottom: 6px;
-  color: #1b5e20;
+  color: var(--dark-green);
 }
 
 .service-card p {
-  font-size: 18px;
+  font-size: 16px;
   color: #555;
 }
 

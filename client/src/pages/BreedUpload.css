@@ -1,48 +1,125 @@
 
 .breed-upload-container {
-  max-width: 550px;
+  max-width: 680px;
   margin: 40px auto;
   padding: 30px;
-  background-color: #f9fff9;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  background-color: #f7fff7;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
 .breed-upload-container h2 {
   text-align: center;
   margin-bottom: 25px;
-  color: #2e7d32;
+  color: var(--dark-green);
+}
+
+.breed-upload-subtitle {
+  text-align: center;
+  margin: -10px 0 20px;
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--primary-green);
 }
 
 .breed-upload-form input,
 .breed-upload-form select {
   width: 100%;
   padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 12px;
+  border: 1px solid #cfe3cf;
   font-size: 14px;
+  background: #ffffff;
+  box-sizing: border-box;
 }
 
 .breed-upload-form input:focus,
 .breed-upload-form select:focus {
   outline: none;
-  border-color: #4caf50;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
 }
 
-.breed-upload-form button {
+.type-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toggle-btn {
+  padding: 10px 14px;
+  border: 1px solid #cfe3cf;
+  background: #ffffff;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+.toggle-btn.active {
+  background: #eaf4ea;
+  box-shadow: 0 0 0 3px rgba(46,125,50,0.15);
+}
+
+.image-preview {
+  margin-top: 8px;
+  border: 1px solid #e6f0e6;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.image-preview img {
   width: 100%;
-  padding: 12px;
-  background-color: #4caf50;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #00e676;
   border: none;
-  border-radius: 8px;
-  color: white;
+  border-radius: 999px;
+  color: #0b3b18;
   font-size: 16px;
   cursor: pointer;
+  font-weight: 700;
+  margin-top: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
 }
 
-.breed-upload-form button:hover {
-  background-color: #388e3c;
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 18px rgba(0,0,0,0.18);
 }
 
 .breed-upload-error {

@@ -1,5 +1,5 @@
 .navbar {
-  background: linear-gradient(90deg, #1b5e20, #2e7d32, #388e3c);
+  background: linear-gradient(90deg, var(--dark-green), var(--primary-green), #388e3c);
   height: 80px;
   width: 100%;
   display: flex;
@@ -45,13 +45,12 @@
 
 /* ================= NAV ITEMS ================= */
 .nav-items {
-  position: absolute;
-  margin-left: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
+  flex: 1;
   display: flex;
-  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  white-space: nowrap;
 }
 
 .nav-items a {
@@ -67,9 +66,42 @@
 
 /* Hover animation */
 .nav-items a:hover {
-  background: linear-gradient(135deg, #66bb6a, #2e7d32);
+  background: linear-gradient(135deg, #66bb6a, var(--primary-green));
   box-shadow: 0 0 12px rgba(102, 187, 106, 0.9);
   transform: translateY(-2px);
+}
+
+.nav-items a.active {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) inset;
+}
+
+.nav-btn {
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.nav-btn.active {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) inset;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #66bb6a, var(--primary-green));
+  box-shadow: 0 0 12px rgba(102, 187, 106, 0.9);
+  transform: translateY(-2px);
+}
+
+/* mobile CTA hidden by default (desktop) */
+.mobile-cta {
+  display: none;
 }
 
 /* ================= HAMBURGER ================= */
@@ -91,18 +123,20 @@
   .menu-icon {
     display: block;
   }
+  .nav-cta {
+    display: none;
+  }
 
   .nav-items {
     position: absolute;
     top: 80px;
     left: 0;
-    transform: none;
     width: 100%;
-    background: linear-gradient(180deg, #2e7d32, #1b5e20);
+    background: linear-gradient(180deg, var(--primary-green), var(--dark-green));
     flex-direction: column;
     align-items: center;
-    gap: 25px;
-    padding: 25px 0;
+    gap: 18px;
+    padding: 18px 0 26px;
     display: none;
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
   }
@@ -116,4 +150,83 @@
     width: 90%;
     text-align: center;
   }
+
+  .nav-btn {
+    width: 90%;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* show WhatsApp inside hamburger */
+  .mobile-cta {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+  }
+  .mobile-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: #ffffff;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  }
+ 
+}
+
+
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.whatsapp-icon {
+  display: block;
+}
+
+.whatsapp-btn.hint-active {
+  animation: pulse-glow 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.6); }
+  50% { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(0, 230, 118, 0.24); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+}
+
+.contact-hint {
+  margin-left: 10px;
+  background: #ffffff;
+  color: var(--dark-green);
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  animation: hint-intro 0.5s ease-out;
+}
+
+@keyframes hint-intro {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
 }

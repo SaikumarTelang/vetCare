@@ -17,4 +17,7 @@ export const getAppointments = () =>
 export const createAppointment = (data) =>
   API.post("/api/appointments", data);
 
+export const confirmAppointment = (id) =>
+  API.patch(`/api/appointments/${id}/confirm`);
+
 export default API;

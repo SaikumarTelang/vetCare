@@ -208,9 +208,6 @@ const Appointment = () => {
           <button onClick={() => window.open(links.doctorWhatsAppLink, "_blank")}>
             Notify Doctor
           </button>
-          <button onClick={() => window.open(links.customerWhatsAppLink, "_blank")}>
-            Send Confirmation
-          </button>
         </div>
       )}
     </div>

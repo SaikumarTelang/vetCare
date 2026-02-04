@@ -59,6 +59,23 @@ exports.getAppointments = async (req, res) => {
   }
 };
 
+/* CONFIRM APPOINTMENT */
+exports.confirmAppointment = async (req, res) => {
+  try {
+    const appointment = await Appointment.findByIdAndUpdate(
+      req.params.id,
+      { confirmed: true },
+      { new: true }
+    );
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+    res.status(200).json({ message: "Appointment confirmed", appointment });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 /* DELETE APPOINTMENT */
 exports.deleteAppointment = async (req, res) => {
   try {
