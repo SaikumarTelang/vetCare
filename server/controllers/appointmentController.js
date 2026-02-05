@@ -70,7 +70,26 @@ exports.confirmAppointment = async (req, res) => {
     if (!appointment) {
       return res.status(404).json({ message: "Appointment not found" });
     }
-    res.status(200).json({ message: "Appointment confirmed", appointment });
+    const customerPhone = appointment.phone ? appointment.phone.replace(/\D/g, "") : "";
+    const formattedDate = new Date(appointment.dateTime).toLocaleString("en-IN", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+    const customerMessage = `
+Appointment Confirmed ✅
+Hello ${appointment.name},
+Your appointment for ${appointment.animalType} (${appointment.serviceType})
+is confirmed on ${formattedDate}.
+
+Thank you for choosing VetCare 🐶🐱
+`;
+    res.status(200).json({
+      message: "Appointment confirmed",
+      appointment,
+      customerWhatsAppLink: customerPhone
+        ? `https://wa.me/${customerPhone}?text=${encodeURIComponent(customerMessage)}`
+        : null,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

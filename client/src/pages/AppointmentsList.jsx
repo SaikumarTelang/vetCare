@@ -44,12 +44,34 @@ const AppointmentsList = () => {
       setAppointments((prev) =>
         prev.map((a) => (a._id === id ? { ...a, confirmed: updated.confirmed } : a))
       );
+      const a = appointments.find((x) => x._id === id);
+      const phone = a?.phone ? a.phone.replace(/\D/g, "") : "";
+      const formattedDate = a?.dateTime ? new Date(a.dateTime).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" }) : "";
+      const msg = `Appointment Confirmed ✅
+Hello ${a?.name},
+Your appointment for ${a?.animalType} (${a?.serviceType})
+is confirmed on ${formattedDate}.
+
+Thank you for choosing VetCare 🐶🐱`;
+      const link = res.data.customerWhatsAppLink || (phone ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}` : null);
+      if (link) window.open(link, "_blank");
       alert("Appointment confirmed");
     } catch (err) {
       console.error(err);
       setAppointments((prev) =>
         prev.map((a) => (a._id === id ? { ...a, confirmed: true } : a))
       );
+      const a = appointments.find((x) => x._id === id);
+      const phone = a?.phone ? a.phone.replace(/\D/g, "") : "";
+      const formattedDate = a?.dateTime ? new Date(a.dateTime).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" }) : "";
+      const msg = `Appointment Confirmed ✅
+Hello ${a?.name},
+Your appointment for ${a?.animalType} (${a?.serviceType})
+is confirmed on ${formattedDate}.
+
+Thank you for choosing VetCare 🐶🐱`;
+      const link = phone ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}` : null;
+      if (link) window.open(link, "_blank");
       alert("Appointment confirmed");
     }
   };
