@@ -178,6 +178,35 @@ export default function About() {
         </div>
       </section>
 
+      <section className="location-section">
+        <div className="container">
+          <h2 className="section-title">Service Areas</h2>
+          <p className="availability-note">We currently serve only Kalaburagi (Gulbarga) and Bidar districts.</p>
+          <div className="location-grid">
+            <div className="location-card">
+              <h4>Kalaburagi (Gulbarga)</h4>
+              <iframe
+                title="Kalaburagi Map"
+                className="map-frame"
+                src="https://www.google.com/maps?q=Kalaburagi%2C%20Karnataka&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <div className="location-card">
+              <h4>Bidar</h4>
+              <iframe
+                title="Bidar Map"
+                className="map-frame"
+                src="https://www.google.com/maps?q=Bidar%2C%20Karnataka&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="stats-section">
         <div className="container">
